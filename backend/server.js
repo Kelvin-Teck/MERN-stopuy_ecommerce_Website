@@ -1,5 +1,5 @@
 import express from 'express';
-// import path from 'path';
+import path from 'path';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import seedRouter from './routes/seedRoutes.js';
@@ -23,7 +23,7 @@ mongoose
 const app = express();
 
 const corsOptions = {
-    origin:'http://localhost:3000', 
+    origin: ["http://localhost:3000", "https://stopbuy.onrender.com"], 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
@@ -52,9 +52,9 @@ app.use('/api/orders', orderRouter);
 //   res.sendFile(path.join(__dirname, '/frontend/build/index.html'))
 // );
 
-// app.use((err, req, res, next) => {
-//   res.status(500).send({ message: err.message });
-// });
+app.use((err, req, res, next) => {
+  res.status(500).send({ message: err.message });
+});
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
