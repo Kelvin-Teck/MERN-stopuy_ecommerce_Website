@@ -3,7 +3,7 @@ import path from 'path';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import seedRouter from './routes/seedRoutes.js';
-import productRouter from './routes/productRoutes.js';
+import productRouter from './routes/ProductRoutes.js';
 import userRouter from './routes/userRoutes.js';
 import orderRouter from './routes/orderRoutes.js';
 // import uploadRouter from './routes/uploadRoutes.js';
