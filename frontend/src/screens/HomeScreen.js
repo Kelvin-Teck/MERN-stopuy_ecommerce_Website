@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 import Product from '../components/Product';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
-// import {baseUrl} from '../utils';
+import {baseUrl} from '../utils';
 
 
 const reducer = (state, action) => {
@@ -38,7 +38,7 @@ function HomeScreen(){
 		const fetchData = async () =>{
 			try{
 				dispatch({type: 'FETCH_REQUEST'});
-				const result = await axios.get(`/api/products`);
+				const result = await axios.get(`${baseUrl}api/products`);
 				// console.log(result.data)
 				dispatch({type: 'FETCH_SUCCESS', payload: result.data});
 			}catch(err){
