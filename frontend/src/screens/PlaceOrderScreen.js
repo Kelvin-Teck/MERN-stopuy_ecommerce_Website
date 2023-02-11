@@ -8,7 +8,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { toast } from 'react-toastify';
-import { getError, baseUrl } from '../utils';
+import { getError } from '../utils';
 import { Store } from '../Store';
 import CheckoutSteps from '../components/CheckoutSteps';
 import LoadingBox from '../components/LoadingBox';
@@ -53,7 +53,7 @@ function PlaceOrderScreen (){
       dispatch({ type: 'CREATE_REQUEST' });
 
       const { data } = await Axios.post(
-        `${baseUrl}api/orders`,
+        `/api/orders`,
         {
           orderItems: cart.cartItems,
           shippingAddress: cart.shippingAddress,

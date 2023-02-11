@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { Store } from '../Store';
-import { getError, baseUrl } from '../utils';
+import { getError } from '../utils';
 import Button from 'react-bootstrap/esm/Button';
 
 const reducer = (state, action) => {
@@ -38,7 +38,7 @@ function OrderHistoryScreen (){
       dispatch({ type: 'FETCH_REQUEST' });
       try {
         const { data } = await axios.get(
-          `${baseUrl}api/orders/mine`,
+          `/api/orders/mine`,
 
           { headers: { Authorization: `Bearer ${userInfo.token}` } }
         );

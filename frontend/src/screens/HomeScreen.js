@@ -2,13 +2,12 @@ import {useEffect, useReducer} from 'react';
 import logger from 'use-reducer-logger';
 import {Helmet} from 'react-helmet-async';
 import axios from 'axios';
-// import data from '../data';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Product from '../components/Product';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
-import {baseUrl} from '../utils';
+// import {baseUrl} from '../utils';
 
 
 const reducer = (state, action) => {
@@ -38,8 +37,7 @@ function HomeScreen(){
 		const fetchData = async () =>{
 			try{
 				dispatch({type: 'FETCH_REQUEST'});
-				const result = await axios.get(`${baseUrl}api/products`);
-				// console.log(result.data)
+				const result = await axios.get(`/api/products`);
 				dispatch({type: 'FETCH_SUCCESS', payload: result.data});
 			}catch(err){
 				dispatch({type: 'FETCH_FAIL', payload: err.message});
@@ -47,9 +45,6 @@ function HomeScreen(){
 		}
 
 		fetchData();
-		// dispatch({type: 'FETCH_REQUEST'});
-
-		// dispatch({type: 'FETCH_SUCCESS', payload: data.products});
 
 	}, []);
 	
@@ -82,4 +77,4 @@ function HomeScreen(){
 
 export default HomeScreen;
 
-// npm i bcryptjs express-async-handler mailgun-js jsonwebtoken cloudinary multer streamifier
+

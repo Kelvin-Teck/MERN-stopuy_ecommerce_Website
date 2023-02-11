@@ -7,7 +7,7 @@ import { Helmet } from 'react-helmet-async';
 import { useContext, useEffect, useState } from 'react';
 import { Store } from '../Store';
 import { toast } from 'react-toastify';
-import { getError, baseUrl } from '../utils';
+import { getError } from '../utils';
 
 
 
@@ -30,13 +30,13 @@ export default function SignupScreen(){
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    if(password != confirmPassword){
+    if(password !== confirmPassword){
     	toast.error("Passwords do not match");
     	return;
     }
 
     try {
-      const { data } = await Axios.post(`${baseUrl}api/users/signup`, {
+      const { data } = await Axios.post(`/api/users/signup`, {
       	name,
         email,
         password,

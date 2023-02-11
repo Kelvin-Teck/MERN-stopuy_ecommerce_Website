@@ -11,7 +11,7 @@ import cors from 'cors';
 dotenv.config();
 
 mongoose
-  .connect(process.env.MONGODB_URI, {useUnifiedTopology: true})
+  .connect('mongodb+srv://kelvin:password12345@stopbuy.hz8lrtg.mongodb.net/?retryWrites=true&w=majority',{useUnifiedTopology: true})
   .then(() => {
     console.log('connected to db');
   })
@@ -19,17 +19,17 @@ mongoose
     console.log(err.message);
   });
 
+// MONGODB_URI=mongodb+srv://kelvin:password12345@stopbuy.hz8lrtg.mongodb.net/?retryWrites=true&w=majority 
 
 const app = express();
+const port = process.env.PORT || 7000;
 
 const corsOptions = {
     origin: ["http://localhost:3000", "https://stopbuy.onrender.com"], 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
-}
-
+};
 app.use(cors(corsOptions));
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -46,17 +46,20 @@ app.use('/api/products', productRouter);
 app.use('/api/users', userRouter);
 app.use('/api/orders', orderRouter);
 
-// const __dirname = path.resolve();
-// app.use(express.static(path.join(__dirname, '/frontend/build')));
-// app.get('*', (req, res) =>
-//   res.sendFile(path.join(__dirname, '/frontend/build/index.html'))
-// );
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, './frontend/build')));
+app.get('*', (req, res) =>
+  res.sendFile(path.join(__dirname, './frontend/build/index.html'), (err) => res.status(500).send(err))
+);
 
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
 });
 
-const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`serve at http://localhost:${port}`);
 });
+
+
+
+
