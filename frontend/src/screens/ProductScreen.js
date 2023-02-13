@@ -2,7 +2,7 @@ import {useParams, useNavigate} from 'react-router-dom';
 import {useEffect, useReducer, useContext} from 'react';
 import axios from 'axios';
 import {Helmet} from 'react-helmet-async';
-import data from '../data';
+// import data from '../data';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';

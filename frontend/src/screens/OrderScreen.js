@@ -9,7 +9,7 @@ import {Helmet} from 'react-helmet-async';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 
 
@@ -59,7 +59,7 @@ const OrderScreen = () => {
 		if(!order._id || (!order._id && order._id !== orderId)){
 			fetchOrder();
 		}
-	}, [order, userInfo, navigate]);
+	}, [order, userInfo, navigate, orderId]);
 
 	return (
 		loading ? (<LoadingBox />) : error ? (<MessageBox variant='danger'>{error}</MessageBox>) : (
